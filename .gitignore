@@ -1,0 +1,5 @@
+node_modules
+package-lock.json
+_old_index.jtx
+dist/test
+src/test/config.json
