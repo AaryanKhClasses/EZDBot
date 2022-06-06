@@ -1,6 +1,9 @@
 import Discord, { ColorResolvable, EmbedFieldData, Message } from 'discord.js'
 const client: Discord.Client = new Discord.Client({ intents: ['GUILD_MEMBERS', 'GUILDS', 'GUILD_BANS', 'GUILD_MESSAGES', 'GUILD_EMOJIS_AND_STICKERS'] })
 
+type defModules = 'def_levelling' | 'def_test'
+import levellingModule from './modules/module_levelling'
+
 export default class Bot {
     #prefix: string
     #commands: { name: string, cb: Function, description?: string, aliases?: string[] }[]
@@ -31,6 +34,14 @@ export default class Bot {
         this.addCommand('ping', (message: Message) => this.#pingCommand(message), 'Pings the bot!', ['pong'])
         this.addCommand('help', (message: Message) => this.#helpCommand(message), 'Shows the list of commands!', ['commands'])
         return this
+    }
+
+    /**
+     * @param module The module to be loaded. (Default: 'def_levelling')
+     * @param mongouri The URI of the MongoDB database.
+     */
+    loadModule(module: defModules | string, mongouri: string) {
+        if(module === 'def_levelling') levellingModule(client, mongouri, { guildOnly: true, levelRequirementMultiplier: 1.5, xpRefershTime: 60000, xpGainRate: 25 })
     }
     
     /**

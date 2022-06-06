@@ -1,5 +1,6 @@
 {
     "token": "bot token",
     "clientID": "bot clientID",
-    "botName": "bot name"
+    "botName": "bot name",
+    "mongouri": "mongodb uri"
 }

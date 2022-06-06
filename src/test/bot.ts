@@ -13,3 +13,4 @@ new Bot(config.token, config.botName, config.clientID) // Create a new bot with 
     author: m.author.tag,
     authorIcon: m.author.displayAvatarURL({ dynamic: true }),
 })] })) // EXAMPLE: Add a command called "embed" which replies with an "EZEmbed".
+.loadModule('def_levelling', config.mongouri) // EXAMPLE: Load the levelling module.

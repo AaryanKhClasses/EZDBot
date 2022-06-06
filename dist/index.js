@@ -18,6 +18,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.EZEmbed = void 0;
 const discord_js_1 = __importDefault(require("discord.js"));
 const client = new discord_js_1.default.Client({ intents: ['GUILD_MEMBERS', 'GUILDS', 'GUILD_BANS', 'GUILD_MESSAGES', 'GUILD_EMOJIS_AND_STICKERS'] });
+const module_levelling_1 = __importDefault(require("./modules/module_levelling"));
 class Bot {
     /**
      * @param {string} token The bot token required to login to the bot and make the bot usable.
@@ -47,6 +48,14 @@ class Bot {
         this.addCommand('ping', (message) => __classPrivateFieldGet(this, _Bot_instances, "m", _Bot_pingCommand).call(this, message), 'Pings the bot!', ['pong']);
         this.addCommand('help', (message) => __classPrivateFieldGet(this, _Bot_instances, "m", _Bot_helpCommand).call(this, message), 'Shows the list of commands!', ['commands']);
         return this;
+    }
+    /**
+     * @param module The module to be loaded. (Default: 'def_levelling')
+     * @param mongouri The URI of the MongoDB database.
+     */
+    loadModule(module, mongouri) {
+        if (module === 'def_levelling')
+            (0, module_levelling_1.default)(client, mongouri, { guildOnly: true, levelRequirementMultiplier: 1.5, xpRefershTime: 60000, xpGainRate: 25 });
     }
     /**
      *

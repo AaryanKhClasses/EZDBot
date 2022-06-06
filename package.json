@@ -1,6 +1,6 @@
 {
   "name": "ezdbot",
-  "version": "1.0.0",
+  "version": "1.0.1-pr.1",
   "decription": "A easy-to-use quick discord bot constructor with lots of in-built features!",
   "main": "./dist/index.js",
   "author": "AaryanKh",
@@ -14,6 +14,7 @@
     "@types/node": "^17.0.36"
   },
   "dependencies": {
-    "discord.js": "^13.7.0"
+    "discord.js": "^13.7.0",
+    "mongoose": "^6.3.5"
   }
 }
